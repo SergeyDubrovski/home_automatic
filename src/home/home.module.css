@@ -1,0 +1,23 @@
+.home{
+    width: 100%;
+    min-height: 100vh;
+    background-color: #1c1c1c;
+    text-align: left;
+    position: relative;
+    color: white;
+}
+.wrapper{
+    padding: 40px 10px 10px 10px;
+    height: 100%;
+}
+.iconLight{
+    margin-left: 10px;
+    cursor: pointer;
+}
+.timerWindow{
+    position: absolute;
+    width: 340px;
+    height: 600px;
+    background-color: #4a494a;
+
+}
