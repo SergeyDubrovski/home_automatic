@@ -21,3 +21,7 @@
     background-color: #4a494a;
 
 }
+.switchWrapper{
+    display: flex;
+    flex-direction: column;
+}
