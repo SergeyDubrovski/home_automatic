@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 
 import s from './home.module.css'
 import { Switch } from '@mui/material'
