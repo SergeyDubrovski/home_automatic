@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import s from './home.module.css'
 import { LuLightbulbOff } from "react-icons/lu";
 import { LuLightbulb } from "react-icons/lu";
