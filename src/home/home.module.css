@@ -21,6 +21,10 @@
     background-color: #4a494a;
 
 }
+.iClose {
+    margin-left: 80%;
+    cursor: pointer;
+}
 .switchWrapper{
     display: flex;
     flex-direction: column;
