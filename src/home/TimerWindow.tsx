@@ -39,7 +39,7 @@ function TimerWindow({ turnOnOff, showTimer }: Props) {
     const switchCheck: JSX.Element[] = timeString.map((el, i) => {
         return (
             <div key={el}>
-                <Switch checked={time[i] ? true : false} color="warning"
+                <Switch size='medium' checked={time[i] ? true : false} color="warning"
                     onChange={() => { onChange(i) }} />
                 <span>{el}</span>
             </div>
