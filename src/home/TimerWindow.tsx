@@ -7,10 +7,11 @@ import { LuBadgeX } from "react-icons/lu";
 type Props = {
     turnOnOff: (onOff: boolean) => void
     showTimer: () => void
+    startTime:(time?:number) =>void
 
 }
 
-function TimerWindow({ turnOnOff, showTimer }: Props) {
+function TimerWindow({ turnOnOff, showTimer, startTime }: Props) {
 
 
     const [time, setTime] = useState<Array<boolean>>([
@@ -18,8 +19,8 @@ function TimerWindow({ turnOnOff, showTimer }: Props) {
     ])
     const [handleTime, setHandleTime] = useState<number>(1)
     const onClick = () => {
-        console.log(handleTime);
-
+        
+        startTime(handleTime)
         turnOnOff(true)
         showTimer()
     }
