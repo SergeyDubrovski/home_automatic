@@ -7,7 +7,7 @@ import { LuBadgeX } from "react-icons/lu";
 type Props = {
     turnOnOff: (onOff: boolean) => void
     showTimer: () => void
-    startTime:(time?:number) =>void
+    startTime: (time?: number) => void
 
 }
 
@@ -17,9 +17,9 @@ function TimerWindow({ turnOnOff, showTimer, startTime }: Props) {
     const [time, setTime] = useState<Array<boolean>>([
         false, false, true, false, false
     ])
-    const [handleTime, setHandleTime] = useState<number>(1)
+    const [handleTime, setHandleTime] = useState<number>(600)
     const onClick = () => {
-        
+
         startTime(handleTime)
         turnOnOff(true)
         showTimer()
@@ -27,7 +27,25 @@ function TimerWindow({ turnOnOff, showTimer, startTime }: Props) {
     const timeString: Array<string> = ['1 min', '5 min', '10 min', '30 min', 'forever']
 
     const onChange = (index: number) => {
-        setHandleTime(index)
+
+        switch (index) {
+            case 0: setHandleTime(60)
+
+                break;
+            case 1: setHandleTime(300)
+
+                break;
+            case 2: setHandleTime(600)
+
+                break;
+            case 3: setHandleTime(1800)
+
+                break;
+
+            default: setHandleTime(0)
+                break;
+        }
+
         setTime(
             prev => prev.map((_, i) => {
                 if (i === index) return true
@@ -50,7 +68,7 @@ function TimerWindow({ turnOnOff, showTimer, startTime }: Props) {
 
     return (
         <div className={s.timerWindow}>
-            <LuBadgeX onClick={showTimer} className={s.iClose} size={40}/>
+            <LuBadgeX onClick={showTimer} className={s.iClose} size={40} />
             <div className={s.switchWrapper}>
                 {switchCheck}
             </div>

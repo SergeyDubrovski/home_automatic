@@ -7,6 +7,7 @@ type Props = {
 
 
 
+
 function MyTimer({ expiryTimestamp }: Props) {
   const {
     
@@ -15,8 +16,6 @@ function MyTimer({ expiryTimestamp }: Props) {
   
   } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
     
- 
-
   
   return (
     <div style={{textAlign: 'center'}}>
