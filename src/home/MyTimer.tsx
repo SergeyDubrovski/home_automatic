@@ -3,18 +3,19 @@ import { useTimer } from 'react-timer-hook';
 
 type Props = {
     expiryTimestamp : Date
+    setLight: (light:boolean) => void
 }
 
 
 
 
-function MyTimer({ expiryTimestamp }: Props) {
+function MyTimer({ expiryTimestamp, setLight }: Props) {
   const {
     
     seconds,
     minutes
   
-  } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
+  } = useTimer({ expiryTimestamp, onExpire: () => {setLight(false) }});
     
   
   return (

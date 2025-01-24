@@ -41,7 +41,7 @@ console.log(login);
             }} size={40} />
 
         }
-        {(time  && light) ? <MyTimer expiryTimestamp={myTime} /> : undefined}
+        {(time  && light) ? <MyTimer setLight={setLight} expiryTimestamp={myTime} /> : undefined}
       </div>
 
     </div>
