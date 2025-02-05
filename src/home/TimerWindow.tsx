@@ -3,6 +3,7 @@ import { useState } from 'react'
 import s from './home.module.css'
 import { Switch } from '@mui/material'
 import { LuBadgeX } from "react-icons/lu";
+import { useSendTimerMutation } from '../services/apiHomeReducer';
 
 type Props = {
     turnOnOff: (onOff: boolean) => void
@@ -18,11 +19,18 @@ function TimerWindow({ turnOnOff, showTimer, startTime }: Props) {
         false, false, true, false, false
     ])
     const [handleTime, setHandleTime] = useState<number>(600)
+    const [data, {isError, isLoading}] = useSendTimerMutation()
+    
     const onClick = () => {
 
         startTime(handleTime)
         turnOnOff(true)
         showTimer()
+        data({Relay1:'0',Relay2:null, Timer1:'' + handleTime, Timer2: null}).unwrap()
+        .then(data => {
+            console.log(data);
+            
+        })
     }
     const timeString: Array<string> = ['1 min', '5 min', '10 min', '30 min', 'forever']
 

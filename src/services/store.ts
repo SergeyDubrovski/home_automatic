@@ -1,10 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit'
 import loginReduser from './loginSlice'
+import { apiHomeReducer } from './apiHomeReducer'
 
 export const store = configureStore({
   reducer: {
-    login: loginReduser
+    login: loginReduser,
+    [apiHomeReducer.reducerPath] : apiHomeReducer.reducer
   },
+  middleware: (getDefaultMiddleware) => {
+    console.log('ddddd');
+    
+   return getDefaultMiddleware().concat(apiHomeReducer.middleware)}
+  
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

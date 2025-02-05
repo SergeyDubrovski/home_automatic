@@ -3,14 +3,16 @@ import s from './home.module.css'
 import { LuLightbulbOff } from "react-icons/lu";
 import { LuLightbulb } from "react-icons/lu";
 import { useSelector } from 'react-redux';
-import { RootState } from '../app/store';
+import { RootState } from '../services/store';
 import TimerWindow from './TimerWindow';
 import MyTimer from './MyTimer';
+import { useSendTimerMutation } from '../services/apiHomeReducer';
 
 function Home() {
   const [light, setLight] = useState<boolean>(false)
   const [timer, setTimer] = useState<boolean>(false)
   const [time, setTime] = useState<number | undefined>(undefined)
+  const [data, {isError, isLoading}] = useSendTimerMutation()
   const login = useSelector((state: RootState) => state.login)
 
   const myTime = new Date();
@@ -25,8 +27,9 @@ function Home() {
   }
   const showTimer = () => {
     setTimer((prev) => !prev)
+    
   }
-console.log(login);
+
 
   return (
     <div className={s.home}>
@@ -38,6 +41,7 @@ console.log(login);
           <LuLightbulb className={s.iconLight}
             onClick={() => { setLight(false) 
               setTime(undefined)
+              data({Relay1:'1',Relay2:null, Timer1:null, Timer2: null})
             }} size={40} />
 
         }
