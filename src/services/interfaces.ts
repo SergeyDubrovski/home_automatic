@@ -9,4 +9,11 @@ export interface ITimer {
     Relay2: string | null
     Timer1: string | null
     Timer2: string | null
+    Motor: boolean
+}
+export interface IHome {
+    Sensor1: number
+    Sensor2: number
+    Sensor3: number
+    Motor: boolean
 }

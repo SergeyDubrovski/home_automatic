@@ -1,53 +1,28 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from "react"
+import {  useTakeSensorsQuery } from "../services/apiHomeReducer"
+import Home1 from "./Home1"
+import Home2 from "./Home2"
 import s from './home.module.css'
-import { LuLightbulbOff } from "react-icons/lu";
-import { LuLightbulb } from "react-icons/lu";
-import { useSelector } from 'react-redux';
-import { RootState } from '../services/store';
-import TimerWindow from './TimerWindow';
-import MyTimer from './MyTimer';
-import { useSendTimerMutation } from '../services/apiHomeReducer';
+import { useAppDispatch } from "../services/hooks"
+import { getHomeSensors } from "../services/homeSlice"
 
 function Home() {
-  const [light, setLight] = useState<boolean>(false)
-  const [timer, setTimer] = useState<boolean>(false)
-  const [time, setTime] = useState<number | undefined>(undefined)
-  const [data, { isError, isLoading }] = useSendTimerMutation()
-  const login = useSelector((state: RootState) => state.login)
-
-  const myTime = new Date();
+  const sensor = useTakeSensorsQuery(undefined)
+  const dispatch = useAppDispatch()
+  
+  
   useEffect(() => {
-
-    if (time !== undefined) myTime.setSeconds(myTime.getSeconds() + time);
-
-
-  }, [time])
-  const turnOnOff = (onOff: boolean) => {
-    setLight(onOff)
-  }
-  const showTimer = () => {
-    setTimer((prev) => !prev)
-
-  }
-
+    if(sensor.data?.state) {
+      dispatch(
+        getHomeSensors(sensor.data.state)
+      )
+    }
+  },[sensor])
+  
   return (
     <div className={s.home}>
-      <div className={s.wrapper}>
-        {timer && <TimerWindow startTime={setTime}
-          turnOnOff={turnOnOff} showTimer={showTimer} />}
-        {!light ? <LuLightbulbOff className={s.iconLight}
-          onClick={showTimer} size={40} /> :
-          <LuLightbulb className={s.iconLight}
-            onClick={() => {
-              setLight(false)
-              setTime(undefined)
-              data({ Relay1: '1', Relay2: null, Timer1: null, Timer2: null })
-            }} size={40} />
-
-        }
-        {(time && light) ? <MyTimer setLight={setLight} expiryTimestamp={myTime} /> : undefined}
-      </div>
-
+        <Home1 />
+        <Home2 />
     </div>
   )
 }
