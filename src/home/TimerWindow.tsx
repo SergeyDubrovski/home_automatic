@@ -19,14 +19,14 @@ function TimerWindow({ turnOnOff, showTimer, startTime }: Props) {
         false, false, true, false, false
     ])
     const [handleTime, setHandleTime] = useState<number>(600)
-    const [data, {isError, isLoading}] = useSendTimerMutation()
+    const [data] = useSendTimerMutation()
     
     const onClick = () => {
 
         startTime(handleTime)
         turnOnOff(true)
         showTimer()
-        data({Relay1:'0',Relay2:null, Timer1:'' + handleTime, Timer2: null}).unwrap()
+        data({Relay1:'0',Relay2:null, Timer1:'' + handleTime, Timer2: null, Motor:false}).unwrap()
         .then(data => {
             console.log(data);
             

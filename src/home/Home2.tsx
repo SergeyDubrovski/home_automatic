@@ -16,7 +16,7 @@ function Home2() {
   const [show, setShow] = useState<boolean>(false)
 
   const dispatch = useAppDispatch()
-  const [data, { isError, isLoading }] = useSendTimerMutation()
+  const [data] = useSendTimerMutation()
 
   const onClick = (timer?: string) => {
 

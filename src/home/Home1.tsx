@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import s from './home.module.css'
 import { LuLightbulbOff } from "react-icons/lu";
 import { LuLightbulb } from "react-icons/lu";
-import { RootState } from '../services/store';
+//import { RootState } from '../services/store';
 import TimerWindow from './TimerWindow';
 import MyTimer from './MyTimer';
 import { useSendTimerMutation } from '../services/apiHomeReducer';
@@ -12,8 +12,8 @@ function Home1() {
   const [light, setLight] = useState<boolean>(false)
   const [timer, setTimer] = useState<boolean>(false)
   const [time, setTime] = useState<number | undefined>(undefined)
-  const [data, { isError, isLoading }] = useSendTimerMutation()
-  const login = useAppSelector((state: RootState) => state.login)
+  const [data] = useSendTimerMutation()
+ // const login = useAppSelector((state: RootState) => state.login)
   const sensor = useAppSelector(state => state.home)
  
 
