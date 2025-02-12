@@ -6,13 +6,13 @@ export const Barc = () => {
    return (
     <>
     <BarcodeScannerComponent
-    delay={1000}
+    delay={3000}
       width={400}
       height={200}
       torch={true}
       onUpdate={(err, result: any) => {
         if (result) setData(result.text);
-        else setData("Not Found");
+        
         if(err) console.log(err);
         
       }}
