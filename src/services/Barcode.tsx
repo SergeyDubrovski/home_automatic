@@ -1,12 +1,12 @@
 import { useState } from "react";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
-import { useNavigate } from "react-router-dom";
+
 
 export const Barc = () => {
     const [data, setData] = useState("Not Found");
     const [stop, setStop] = useState<boolean>(false)
     const [flash, setFlash] = useState<boolean>(false)
-    const navigate = useNavigate()
+
 
     return (
         <>
@@ -28,7 +28,7 @@ export const Barc = () => {
             />
             <p>{data}</p>
             <button style={{ width: '100px', height: '50px' }} onClick={() => setFlash(prev => !prev)}>FLASH</button>
-            <button style={{ width: '100px', height: '50px' }} onClick={() => navigate('/bar')}>RELOAD</button>
+            <button style={{ width: '100px', height: '50px' }} onClick={() => window.location.reload()}>RELOAD</button>
         </>)
 };
 
