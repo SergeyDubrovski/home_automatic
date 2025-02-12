@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 export const Barc = () => {
     const [data, setData] = useState("Not Found");
     const [stop, setStop] = useState<boolean>(false)
     const [flash, setFlash] = useState<boolean>(false)
+    useEffect(() => {
+        console.log(stop);
+        
+    }, [stop])
    return (
     <>
     <BarcodeScannerComponent
