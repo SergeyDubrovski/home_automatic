@@ -5,11 +5,12 @@ import Home2 from "./Home2"
 import s from './home.module.css'
 import { useAppDispatch } from "../services/hooks"
 import { getHomeSensors } from "../services/homeSlice"
+import { useNavigate } from "react-router-dom"
 
 function Home() {
   const sensor = useTakeSensorsQuery(undefined)
   const dispatch = useAppDispatch()
-  
+  const navigate = useNavigate()
   
   useEffect(() => {
     if(sensor.data?.state) {
@@ -21,6 +22,7 @@ function Home() {
   
   return (
     <div className={s.home}>
+      <button style={{width:'100px', height:'50px'}} onClick={() => {navigate('/bar')}}>BAR-code</button>
         <Home1 />
         <Home2 />
     </div>
