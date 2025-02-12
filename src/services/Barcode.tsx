@@ -1,7 +1,8 @@
-import Barcode from 'react-barcode';
+import { BarcodeScanner } from 'react-barcode-scanner'
+import "react-barcode-scanner/polyfill"
 
 export const Barc = () => {
-    return <Barcode value="barcode-example" />;
+    return <BarcodeScanner />;
 };
 
 export default Barc
