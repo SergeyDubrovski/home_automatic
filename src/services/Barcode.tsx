@@ -9,6 +9,7 @@ export const Barc = () => {
     delay={1000}
       width={400}
       height={200}
+      torch={true}
       onUpdate={(err, result: any) => {
         if (result) setData(result.text);
         else setData("Not Found");
