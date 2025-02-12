@@ -6,8 +6,8 @@ export const Barc = () => {
    return (
     <>
     <BarcodeScannerComponent
-      width={500}
-      height={500}
+      width={300}
+      height={100}
       onUpdate={(err, result: any) => {
         if (result) setData(result.text);
         else setData("Not Found");
