@@ -1,7 +1,7 @@
 
 import { QrcodeSuccessCallback } from 'html5-qrcode'
-import Html5QrcodePlugin from './HTML';
 import { useState } from 'react';
+import Html5QrcodePlugin2 from './Html5Qr';
 
 
 function Barcode2() {
@@ -27,7 +27,7 @@ const res = result.map((el, i) => {
 
   return (
     <div>
-         <Html5QrcodePlugin
+         <Html5QrcodePlugin2
          fps={10}
          qrbox={{width: 200, height: 60}}
          
