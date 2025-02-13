@@ -12,7 +12,7 @@ const onNewScanResult:QrcodeSuccessCallback = (decodedText, decodedResult) => {
 
     setResult((prev:string[]):string[] => {
       if(prev[0] === 'Wait!!!') return [decodedText]
-
+      if (prev[prev.length - 1] === decodedText) return prev
       return [...prev, decodedText]
     })
     console.log(decodedText, decodedResult);
