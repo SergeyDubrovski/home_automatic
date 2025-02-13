@@ -24,7 +24,7 @@ function App() {
         <Route path="/bar2" element={<Html5QrcodePlugin 
          fps={10}
          qrbox={250}
-         disableFlip={false}
+         disableFlip={true}
          qrCodeSuccessCallback={onNewScanResult}
         />} />
       </Routes>

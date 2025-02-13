@@ -67,7 +67,11 @@ const Html5QrcodePlugin = (props: Props) => {
     }, []);
 
     return (
-        <div id={qrcodeRegionId} >
+        <div>
+
+
+        
+        <div id={qrcodeRegionId} />
             <h1>iko;sahf;</h1>
             </div>
     );
