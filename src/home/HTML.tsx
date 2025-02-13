@@ -10,7 +10,7 @@ export type Props = {
     aspectRatio?: number | undefined
     disableFlip?: boolean | undefined
     videoConstraints?: MediaTrackConstraints | undefined
-
+    showTorchButtonIfSupported?: boolean | undefined
     verbose?: boolean | undefined
     qrCodeSuccessCallback: (decodedText: string, result: Html5QrcodeResult) => void
     qrCodeErrorCallback?: (errorMessage: string, error: Html5QrcodeError) => void
@@ -26,8 +26,8 @@ const createConfig = (props: Html5QrcodeScannerConfig) => {
         qrbox: undefined,
         aspectRatio: undefined,
         disableFlip: undefined,
-        videoConstraints: undefined
-
+        videoConstraints: undefined,
+        showTorchButtonIfSupported: undefined
     };
     if (props.fps) {
         config.fps = props.fps;
@@ -45,7 +45,7 @@ const createConfig = (props: Html5QrcodeScannerConfig) => {
 };
 
 const Html5QrcodePlugin = (props: Props) => {
-   
+
     useEffect(() => {
         // when component mounts
         const config = createConfig(props);
@@ -67,10 +67,10 @@ const Html5QrcodePlugin = (props: Props) => {
     }, []);
 
     return (
-        
 
-            <div id={qrcodeRegionId} />
-      
+
+        <div id={qrcodeRegionId} />
+
     );
 };
 

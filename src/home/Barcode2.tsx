@@ -22,6 +22,7 @@ const onNewScanResult:QrcodeSuccessCallback = (decodedText, decodedResult) => {
          fps={10}
          qrbox={250}
          disableFlip={true}
+         showTorchButtonIfSupported={true}
          qrCodeSuccessCallback={onNewScanResult}
         />
         <h1>{result}</h1>
