@@ -28,7 +28,7 @@ const res = result.map((el, i) => {
   return (
     <div>
          <Html5QrcodePlugin2
-         fps={3000}
+         fps={3}
          qrbox={{width: 200, height: 60}}
          
          showTorchButtonIfSupported={true}
