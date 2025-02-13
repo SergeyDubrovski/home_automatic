@@ -1,12 +1,13 @@
 
 
-import Html5QrcodePlugin from './HTML';
+import HtML from './HTML';
+
 
 
 
 function Barcode() {
 
-   <Html5QrcodePlugin />
+  return <HtML />
 }
 
 export default Barcode
