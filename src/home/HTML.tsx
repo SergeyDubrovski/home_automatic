@@ -27,7 +27,8 @@ const createConfig = (props: Html5QrcodeScannerConfig) => {
         aspectRatio: undefined,
         disableFlip: undefined,
         videoConstraints: undefined,
-        showTorchButtonIfSupported: undefined
+        showTorchButtonIfSupported: true
+        
     };
     if (props.fps) {
         config.fps = props.fps;
