@@ -29,7 +29,7 @@ const res = result.map((el, i) => {
     <div>
          <Html5QrcodePlugin2
          fps={10}
-         qrbox={{width: 200, height: 50}}
+         qrbox={{width: 150, height: 50}}
          
          showTorchButtonIfSupported={true}
          qrCodeSuccessCallback={onNewScanResult}
