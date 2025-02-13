@@ -1,13 +1,9 @@
 
-
 import HtML from './HTML';
 
 
-
-
 function Barcode() {
-
-  return <HtML />
+return <HtML />
 }
 
 export default Barcode
