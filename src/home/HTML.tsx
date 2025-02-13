@@ -5,12 +5,12 @@ import { Html5QrcodeScannerConfig } from 'html5-qrcode/esm/html5-qrcode-scanner'
 import { useEffect } from 'react';
 
 export type Props = {
-     fps: number | undefined
-        qrbox?: number | QrDimensions | QrDimensionFunction | undefined
-        aspectRatio?: number | undefined
-        disableFlip?: boolean | undefined
-        videoConstraints?: MediaTrackConstraints | undefined
-    
+    fps: number | undefined
+    qrbox?: number | QrDimensions | QrDimensionFunction | undefined
+    aspectRatio?: number | undefined
+    disableFlip?: boolean | undefined
+    videoConstraints?: MediaTrackConstraints | undefined
+
     verbose?: boolean | undefined
     qrCodeSuccessCallback: (decodedText: string, result: Html5QrcodeResult) => void
     qrCodeErrorCallback?: (errorMessage: string, error: Html5QrcodeError) => void
@@ -45,7 +45,7 @@ const createConfig = (props: Html5QrcodeScannerConfig) => {
 };
 
 const Html5QrcodePlugin = (props: Props) => {
-
+   
     useEffect(() => {
         // when component mounts
         const config = createConfig(props);
@@ -67,13 +67,10 @@ const Html5QrcodePlugin = (props: Props) => {
     }, []);
 
     return (
-        <div>
-
-
         
-        <div id={qrcodeRegionId} />
-            <h1>iko;sahf;</h1>
-            </div>
+
+            <div id={qrcodeRegionId} />
+      
     );
 };
 
