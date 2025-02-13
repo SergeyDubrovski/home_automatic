@@ -6,15 +6,24 @@ import { useState } from 'react';
 
 function Barcode2() {
 
-     const [result, setResult] = useState<string>('Wait!!!') 
+     const [result, setResult] = useState<string[]>(['Wait!!!']) 
 
 const onNewScanResult:QrcodeSuccessCallback = (decodedText, decodedResult) => {
 
-    setResult(decodedText)
+    setResult((prev:string[]):string[] => {
+      if(prev[0] === 'Wait!!!') return [decodedText]
+
+      return [...prev, decodedText]
+    })
     console.log(decodedText, decodedResult);
     
     // handle decoded results here
 };
+const res = result.map((i, el) => {
+  return(
+    <h1 key={el + i}>el</h1>
+  )
+})
 
   return (
     <div>
@@ -25,7 +34,7 @@ const onNewScanResult:QrcodeSuccessCallback = (decodedText, decodedResult) => {
          showTorchButtonIfSupported={true}
          qrCodeSuccessCallback={onNewScanResult}
         />
-        <h1>{result}</h1>
+        <h1>{res}</h1>
     </div>
    
   )
