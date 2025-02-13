@@ -21,7 +21,7 @@ const onNewScanResult:QrcodeSuccessCallback = (decodedText, decodedResult) => {
 };
 const res = result.map((i, el) => {
   return(
-    <h1 key={el + i}>el</h1>
+    <h1 key={el + i}>{el}</h1>
   )
 })
 
