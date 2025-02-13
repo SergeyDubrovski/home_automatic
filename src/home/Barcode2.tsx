@@ -20,7 +20,7 @@ const onNewScanResult:QrcodeSuccessCallback = (decodedText, decodedResult) => {
     <div>
          <Html5QrcodePlugin
          fps={10}
-        
+         qrbox={120}
          
          showTorchButtonIfSupported={true}
          qrCodeSuccessCallback={onNewScanResult}
