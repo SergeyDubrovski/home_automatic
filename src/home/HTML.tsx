@@ -23,7 +23,7 @@ const qrcodeRegionId = "html5qr-code-full-region";
 const createConfig = (props: Html5QrcodeScannerConfig) => {
     const config: Html5QrcodeScannerConfig = {
         fps: undefined,
-        qrbox:  {width: 160,
+        qrbox:  {width: 200,
         height: 60},
         aspectRatio: undefined,
         disableFlip: undefined,
