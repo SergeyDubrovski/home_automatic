@@ -108,7 +108,7 @@ const Html5QrcodePlugin = (props: Props) => {
     return (
 
 
-        <div id={'reader'} />
+        <div id="reader"/>
 
     );
 };
