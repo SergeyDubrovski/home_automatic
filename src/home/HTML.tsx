@@ -64,7 +64,7 @@ const Html5QrcodePlugin = (props: Props) => {
             });
         };
 
-    }, [props]);
+    }, []);
 
     return (
         <div id={qrcodeRegionId} >
