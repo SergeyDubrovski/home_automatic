@@ -1,5 +1,5 @@
 import { useEffect } from "react"
-import {  useTakeSensorsQuery } from "../services/apiHomeReducer"
+import { useTakeSensorsQuery } from "../services/apiHomeReducer"
 import Home1 from "./Home1"
 import Home2 from "./Home2"
 import s from './home.module.css'
@@ -11,21 +11,22 @@ function Home() {
   const sensor = useTakeSensorsQuery(undefined)
   const dispatch = useAppDispatch()
   const navigate = useNavigate()
-  
+
   useEffect(() => {
-    if(sensor.data?.state) {
+    if (sensor.data?.state) {
       dispatch(
         getHomeSensors(sensor.data.state)
       )
     }
-  },[sensor])
-  
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sensor])
+
   return (
     <div className={s.home}>
-      <button style={{width:'100px', height:'50px'}} onClick={() => {navigate('/bar')}}>BAR-code</button>
-      <button style={{width:'100px', height:'50px'}} onClick={() => {navigate('/bar2')}}>BAR-code2</button>
-        <Home1 />
-        <Home2 />
+      <button style={{ width: '100px', height: '50px' }} onClick={() => { navigate('/bar') }}>BAR-code</button>
+      <button style={{ width: '100px', height: '50px' }} onClick={() => { navigate('/bar2') }}>BAR-code2</button>
+      <Home1 />
+      <Home2 />
     </div>
   )
 }
