@@ -6,6 +6,11 @@ const Barcode: React.FC = () => {
   const [data, setData] = useState<string[]>([]);
   //const [scanning, setScanning] = useState<boolean>(true);
 
+  const result = data.map((el, i) => {
+return (
+  <p key={el+i}>{el}</p>
+)
+  })
   return (
     <div style={{ position: 'relative', width: '100%', maxWidth: '500px', margin: 'auto' }}>
       {/* Barcode Scanner Component */}
@@ -39,7 +44,7 @@ const Barcode: React.FC = () => {
         />
       )
       {/* Display Scanned Data */}
-      <p>{data}</p>
+      <p>{result}</p>
     </div>
   );
 };
