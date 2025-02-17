@@ -34,7 +34,7 @@ return (
         <div
           style={{
             position: 'absolute',
-            top: '50%',
+            top: '80%',
             left: '0',
             width: '100%',
             height: '2px',
