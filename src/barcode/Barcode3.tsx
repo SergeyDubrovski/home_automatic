@@ -76,7 +76,7 @@ const BarcodeScanner: React.FC = () => {
 
       {/* Display Scan Result */}
       {scanResult && (
-        <div style={{ marginTop: '20px', textAlign: 'center' }}>
+        <div style={{ marginTop: '-20px', textAlign: 'center' }}>
           <h3>Scanned Result:</h3>
           <p>{scanResult}</p>
         </div>
