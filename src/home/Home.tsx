@@ -25,6 +25,7 @@ function Home() {
     <div className={s.home}>
       <button style={{ width: '100px', height: '50px' }} onClick={() => { navigate('/bar') }}>BAR-code</button>
       <button style={{ width: '100px', height: '50px' }} onClick={() => { navigate('/bar2') }}>BAR-code2</button>
+      <button style={{ width: '100px', height: '50px' }} onClick={() => { navigate('/bar3') }}>BAR-code3</button>
       <Home1 />
       <Home2 />
     </div>

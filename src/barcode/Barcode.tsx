@@ -4,6 +4,7 @@ import BarcodeScannerComponent from 'react-qr-barcode-scanner';
 
 const Barcode: React.FC = () => {
   const [data, setData] = useState<string[]>([]);
+  const [flash, setFlash] = useState(false)
   //const [scanning, setScanning] = useState<boolean>(true);
 
   const result = data.map((el, i) => {
@@ -17,7 +18,7 @@ return (
       <BarcodeScannerComponent
         width="100%"
         height="100%"
-        torch={true}
+        torch={flash}
         onUpdate={(err, result:any) => {
           if (result) {
             setData(prev => [...prev, result.text]);
@@ -34,7 +35,7 @@ return (
         <div
           style={{
             position: 'absolute',
-            top: '80%',
+            top: '50%',
             left: '0',
             width: '100%',
             height: '2px',
@@ -44,7 +45,9 @@ return (
         />
       )
       {/* Display Scanned Data */}
+      <h4 onClick={() => setFlash(prev => !prev)}>Flash</h4>
       <p>{result}</p>
+
     </div>
   );
 };
