@@ -14,8 +14,8 @@ const BarcodeScanner: React.FC = () => {
           type: 'LiveStream',
           target: scannerRef.current!, // Use the ref as the target
           constraints: {
-            width: 640,
-            height: 480,
+            width: 240,
+            height: 120,
             facingMode: 'environment', // Use the rear camera
           },
         },
