@@ -23,7 +23,7 @@ const BarcodeScanner: React.FC = () => {
           readers: ['code_128_reader', 'ean_reader', 'upc_reader'], // Supported barcode formats
         },
         locator: {
-          patchSize: 'medium', // Size of the scanning area
+          patchSize: 'small', // Size of the scanning area
           halfSample: true,
         },
         numOfWorkers: 4, // Number of workers for processing
@@ -54,7 +54,7 @@ const BarcodeScanner: React.FC = () => {
   }, []);
 
   return (
-    <div style={{ position: 'relative', width: '100%', maxWidth: '640px', margin: 'auto' }}>
+    <div style={{ position: 'relative', width: '100%', maxWidth: '400px', margin: 'auto' }}>
       {/* Scanner Container */}
       <div ref={scannerRef} style={{ position: 'relative', width: '100%', height: 'auto' }} />
 
