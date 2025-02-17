@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import BarcodeScannerComponent from 'react-qr-barcode-scanner';
 
 const Barcode: React.FC = () => {
-  const [data, setData] = useState<string>('No result');
+  const [data, setData] = useState<string[]>([]);
   //const [scanning, setScanning] = useState<boolean>(true);
 
   return (
@@ -12,13 +12,13 @@ const Barcode: React.FC = () => {
       <BarcodeScannerComponent
         width="100%"
         height="100%"
+        torch={true}
         onUpdate={(err, result:any) => {
           if (result) {
-            setData(result.text);
+            setData(prev => [...prev, result.text]);
             //setScanning(false); // Stop scanning after a result is found
-          } else {
-            setData('No result');
-          }
+          } 
+          
           if(err) console.log(err);
           
         }}
