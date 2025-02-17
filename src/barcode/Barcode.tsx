@@ -40,7 +40,7 @@ return (
             width: '100%',
             height: '2px',
             backgroundColor: 'red',
-            transform: 'translateY(-50%)',
+            //transform: 'translateY(-50%)',
           }}
         />
       )
