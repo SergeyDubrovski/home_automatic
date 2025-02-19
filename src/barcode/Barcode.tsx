@@ -1,55 +1,54 @@
+import  { useRef, useEffect, useState } from 'react';
+import Webcam from 'react-webcam';
+import * as tf from '@tensorflow/tfjs';
+import * as mobilenet from '@tensorflow-models/mobilenet';
+import * as knnClassifier from '@tensorflow-models/knn-classifier';
 
-import React, { useState } from 'react';
-import BarcodeScannerComponent from 'react-qr-barcode-scanner';
+const NumberRecognition = () => {
+  const webcamRef = useRef<any>(null);
+  const [prediction, setPrediction] = useState('');
+  const classifier = useRef<any>(null);
+  const net = useRef<any>(null);
 
-const Barcode: React.FC = () => {
-  const [data, setData] = useState<string[]>([]);
-  const [flash, setFlash] = useState(false)
-  //const [scanning, setScanning] = useState<boolean>(true);
+  useEffect(() => {
+    const loadModels = async () => {
+      classifier.current = knnClassifier.create();
+      net.current = await mobilenet.load();
+    };
 
-  const result = data.map((el, i) => {
-return (
-  <p key={el+i}>{el}</p>
-)
-  })
+    loadModels();
+  }, []);
+
+  const capture = async () => {
+    if (webcamRef.current && net.current && classifier.current) {
+      const image = webcamRef.current.getScreenshot();
+      const img = new Image();
+      img.src = image;
+      img.onload = async () => {
+        const imgTensor = tf.browser.fromPixels(img).resizeNearestNeighbor([224, 224]).toFloat().expandDims();
+        const activation = net.current.infer(imgTensor, 'conv_preds');
+        const result = await classifier.current.predictClass(activation);
+
+        // Здесь можно добавить логику для определения числа
+        // Например, если вы обучили классификатор на числах, то result.label будет содержать метку числа
+        setPrediction(result.label);
+      };
+    }
+  };
+
   return (
-    <div style={{ position: 'relative', width: '100%', maxWidth: '500px', margin: 'auto' }}>
-      {/* Barcode Scanner Component */}
-      <BarcodeScannerComponent
-        width="100%"
-        height="100%"
-        torch={flash}
-        onUpdate={(err, result:any) => {
-          if (result) {
-            setData(prev => [...prev, result.text]);
-            //setScanning(false); // Stop scanning after a result is found
-          } 
-          
-          if(err) console.log(err);
-          
-        }}
+    <div>
+      <Webcam
+        audio={false}
+        ref={webcamRef}
+        screenshotFormat="image/jpeg"
+        width={640}
+        height={480}
       />
-
-      {/* Red Line to Indicate Scanning Area */}
-      
-        <div
-          style={{
-            position: 'absolute',
-            top: '50%',
-            left: '0',
-            width: '100%',
-            height: '2px',
-            backgroundColor: 'red',
-            //transform: 'translateY(-50%)',
-          }}
-        />
-      )
-      {/* Display Scanned Data */}
-      <h4 onClick={() => setFlash(prev => !prev)}>Flash</h4>
-      <p>{result}</p>
-
+      <button onClick={capture}>Распознать число</button>
+      {prediction && <p>Распознанное число: {prediction}</p>}
     </div>
   );
 };
 
-export default Barcode;
+export default NumberRecognition;
