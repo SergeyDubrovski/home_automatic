@@ -35,7 +35,9 @@ const NumberRecognition = () => {
       };
     }
   };
-
+  const videoConstraints = {
+    facingMode: 'environment', // 'user' — фронтальная камера, 'environment' — задняя
+  };
   return (
     <div>
       <Webcam
@@ -44,6 +46,9 @@ const NumberRecognition = () => {
         screenshotFormat="image/jpeg"
         width={640}
         height={480}
+        videoConstraints={
+          videoConstraints
+        }
       />
       <button onClick={capture}>Распознать число</button>
       {prediction && <p>Распознанное число: {prediction}</p>}
