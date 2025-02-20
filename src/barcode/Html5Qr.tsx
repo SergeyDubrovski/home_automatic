@@ -1,6 +1,6 @@
 // file = Html5QrcodePlugin.jsx
 import { Html5QrcodeResult, Html5QrcodeScanner } from 'html5-qrcode';
-import { Html5QrcodeError, QrDimensionFunction, QrDimensions } from 'html5-qrcode/esm/core';
+import { Html5QrcodeError, Html5QrcodeSupportedFormats, QrDimensionFunction, QrDimensions } from 'html5-qrcode/esm/core';
 import { Html5QrcodeScannerConfig } from 'html5-qrcode/esm/html5-qrcode-scanner';
 import { useEffect } from 'react';
 
@@ -18,8 +18,12 @@ export type Props = {
 
 }
 const qrcodeRegionId = "html5qr-code-full-region";
-
 // Creates the configuration object for Html5QrcodeScanner.
+const formatsToSupport = [
+    Html5QrcodeSupportedFormats.CODE_128
+    
+  ];
+
 const createConfig = (props: Html5QrcodeScannerConfig) => {
     const config: Html5QrcodeScannerConfig = {
         fps: undefined,
@@ -28,8 +32,8 @@ const createConfig = (props: Html5QrcodeScannerConfig) => {
         aspectRatio: undefined,
         disableFlip: undefined,
         videoConstraints: undefined,
-        showTorchButtonIfSupported: true
-        
+        showTorchButtonIfSupported: true,
+        formatsToSupport:formatsToSupport
     };
     if (props.fps) {
         config.fps = props.fps;
