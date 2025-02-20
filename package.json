@@ -12,7 +12,6 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@ericblade/quagga2": "^1.8.4",
     "@mui/material": "^6.4.0",
     "@reduxjs/toolkit": "^2.5.0",
     "@tensorflow-models/knn-classifier": "^1.2.6",
