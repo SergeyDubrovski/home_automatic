@@ -17,7 +17,7 @@ const QrScanner: React.FC = () => {
   const startScanning = () => {
     if (html5QrCodeRef.current) {
       const config = {
-        fps: 500, qrbox: { width: 200, height: 60, x: 40 },
+        fps: 500, qrbox: { width: 200, height: 60, y: 80 },
         showTorchButtonIfSupported: true,
         formatsToSupport: [Html5QrcodeSupportedFormats.CODE_128]
       };
