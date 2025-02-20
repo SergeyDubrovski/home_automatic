@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Html5Qrcode, Html5QrcodeSupportedFormats } from "html5-qrcode";
+import QrCodeScanner from "./scanFile";
 
 const QrScanner: React.FC = () => {
   const [isScanning, setIsScanning] = useState(false);
@@ -129,6 +130,7 @@ const QrScanner: React.FC = () => {
           {isFlashOn ? "Выключить вспышку" : "Включить вспышку"}
         </button>
       </div>
+      <QrCodeScanner />
     </div>
   );
 };

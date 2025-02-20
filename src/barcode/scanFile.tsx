@@ -1,10 +1,10 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Html5Qrcode } from 'html5-qrcode';
 
 const QrCodeScanner = () => {
   const fileInputRef = useRef(null);
-
-  const handleFileUpload = (event:any) => {
+const [result, setResult] = useState<any>('')
+   const handleFileUpload = (event:any) => {
     const file = event.target.files[0];
     if (!file) {
       return;
@@ -14,7 +14,7 @@ const QrCodeScanner = () => {
     html5Qrcode.scanFileV2(file, true)
       .then(decodedText => {
         console.log("QR Code scanned successfully:", decodedText);
-        alert(`QR Code scanned successfully: ${decodedText}`);
+        setResult(decodedText.decodedText)
       })
       .catch(err => {
         console.error("Error scanning QR code:", err);
@@ -32,6 +32,7 @@ const QrCodeScanner = () => {
         onChange={handleFileUpload}
       />
       <div id="qr-reader" style={{ width: '500px', height: '500px' }}></div>
+      <h3>{result}</h3>
     </div>
   );
 };
