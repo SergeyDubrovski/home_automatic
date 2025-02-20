@@ -2,6 +2,7 @@
 import { QrcodeSuccessCallback } from 'html5-qrcode'
 import { useState } from 'react';
 import Html5QrcodePlugin2 from './Html5Qr';
+import QrCodeScanner from './scanFile';
 
 
 function Barcode2() {
@@ -35,6 +36,7 @@ const res = result.map((el, i) => {
          qrCodeSuccessCallback={onNewScanResult}
         />
         <h1>{res}</h1>
+        <QrCodeScanner />
     </div>
    
   )
