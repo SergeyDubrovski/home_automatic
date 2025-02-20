@@ -31,7 +31,7 @@ const [result, setResult] = useState<any>('')
         ref={fileInputRef}
         onChange={handleFileUpload}
       />
-      <div id="qr-reader" style={{ width: '500px', height: '500px' }}></div>
+      <div id="qr-reader" style={{ width: '250px', height: '250px' }}></div>
       <h3>{result}</h3>
     </div>
   );
