@@ -7,6 +7,7 @@ import Html5QrcodePlugin2 from './Html5Qr';
 function Barcode2() {
 
      const [result, setResult] = useState<string[]>(['Wait!!!']) 
+     const [decoded, setDecoded] =useState<any>('')
 
 const onNewScanResult:QrcodeSuccessCallback = (decodedText, decodedResult) => {
 
@@ -16,7 +17,7 @@ const onNewScanResult:QrcodeSuccessCallback = (decodedText, decodedResult) => {
       return [...prev, decodedText]
     })
     console.log(decodedText, decodedResult);
-    
+    setDecoded(decodedResult.result.format?.formatName)
     // handle decoded results here
 };
 const res = result.map((el, i) => {
@@ -35,6 +36,7 @@ const res = result.map((el, i) => {
          qrCodeSuccessCallback={onNewScanResult}
         />
         <h1>{res}</h1>
+        <h2>{decoded}</h2>
     </div>
    
   )
