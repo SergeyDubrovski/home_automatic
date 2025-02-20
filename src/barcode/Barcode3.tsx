@@ -3,7 +3,9 @@ import { Html5Qrcode, Html5QrcodeSupportedFormats } from "html5-qrcode";
 
 const QrScanner: React.FC = () => {
   const [isScanning, setIsScanning] = useState(false);
+  const [isFlashOn, setIsFlashOn] = useState(false);
   const html5QrCodeRef = useRef<Html5Qrcode | null>(null);
+  const videoTrackRef = useRef<MediaStreamTrack | null>(null);
 
   // Инициализация сканера
   useEffect(() => {
@@ -54,6 +56,19 @@ const QrScanner: React.FC = () => {
         });
     }
   };
+  const toggleFlash = async () => {
+    if (videoTrackRef.current) {
+      try {
+        await videoTrackRef.current.applyConstraints({
+          advanced: [{ torch: !isFlashOn }] as any, // torch — это параметр для управления вспышкой
+        });
+        setIsFlashOn(!isFlashOn);
+      } catch (err) {
+        console.error("Ошибка управления вспышкой:", err);
+      }
+    }
+  };
+
 
   return (
     <div>
@@ -90,6 +105,20 @@ const QrScanner: React.FC = () => {
             Остановить сканирование
           </button>
         )}
+        <button
+              onClick={toggleFlash}
+              style={{
+                padding: "10px 20px",
+                fontSize: "16px",
+                backgroundColor: isFlashOn ? "#ffc107" : "#6c757d",
+                color: "#fff",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+              }}
+            >
+              {isFlashOn ? "Выключить вспышку" : "Включить вспышку"}
+            </button>
       </div>
     </div>
   );
