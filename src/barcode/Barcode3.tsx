@@ -15,10 +15,11 @@ const QrScanner: React.FC = () => {
   // Запуск сканирования
   const startScanning = () => {
     if (html5QrCodeRef.current) {
-      const config = { fps: 500, qrbox: { width: 200, height: 60 },
-      showTorchButtonIfSupported: true,
-        formatsToSupport:[Html5QrcodeSupportedFormats.CODE_128]
-    };
+      const config = {
+        fps: 500, qrbox: { width: 200, height: 60 },
+        showTorchButtonIfSupported: true,
+        formatsToSupport: [Html5QrcodeSupportedFormats.CODE_128]
+      };
 
       html5QrCodeRef.current
         .start(
@@ -35,11 +36,19 @@ const QrScanner: React.FC = () => {
         )
         .then(() => {
           setIsScanning(true);
+          const videoElement = document.querySelector("video");
+          if (videoElement) {
+            const stream = videoElement.srcObject as MediaStream;
+            videoTrackRef.current = stream.getVideoTracks()[0];
+          }
         })
         .catch((err: string) => {
           console.error("Ошибка запуска камеры:", err);
         });
+
+
     }
+
   };
 
   // Остановка сканирования
@@ -106,19 +115,19 @@ const QrScanner: React.FC = () => {
           </button>
         )}
         <button
-              onClick={toggleFlash}
-              style={{
-                padding: "10px 20px",
-                fontSize: "16px",
-                backgroundColor: isFlashOn ? "#ffc107" : "#6c757d",
-                color: "#fff",
-                border: "none",
-                borderRadius: "5px",
-                cursor: "pointer",
-              }}
-            >
-              {isFlashOn ? "Выключить вспышку" : "Включить вспышку"}
-            </button>
+          onClick={toggleFlash}
+          style={{
+            padding: "10px 20px",
+            fontSize: "16px",
+            backgroundColor: isFlashOn ? "#ffc107" : "#6c757d",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+          }}
+        >
+          {isFlashOn ? "Выключить вспышку" : "Включить вспышку"}
+        </button>
       </div>
     </div>
   );
