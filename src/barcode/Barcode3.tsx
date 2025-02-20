@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { Html5Qrcode } from "html5-qrcode";
+import { Html5Qrcode, Html5QrcodeSupportedFormats } from "html5-qrcode";
 
 const QrScanner: React.FC = () => {
   const [isScanning, setIsScanning] = useState(false);
@@ -13,7 +13,10 @@ const QrScanner: React.FC = () => {
   // Запуск сканирования
   const startScanning = () => {
     if (html5QrCodeRef.current) {
-      const config = { fps: 10, qrbox: { width: 250, height: 250 } };
+      const config = { fps: 500, qrbox: { width: 200, height: 60 },
+      showTorchButtonIfSupported: true,
+        formatsToSupport:[Html5QrcodeSupportedFormats.CODE_128]
+    };
 
       html5QrCodeRef.current
         .start(
